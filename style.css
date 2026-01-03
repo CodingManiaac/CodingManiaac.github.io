@@ -1,316 +1,261 @@
-/* --- 1. Variables & Global Settings --- */
+/* --- 1. Variables & Enterprise Theme Palette --- */
 :root {
-    /* Dark Mode (Default) - "Cyber Slate" Theme */
-    --bg-color: #0b1121;
-    --bg-gradient: radial-gradient(circle at 50% 50%, #1a2236 0%, #0b1121 100%);
-    --card-bg: rgba(30, 41, 59, 0.7); /* Translucent for Glass Effect */
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
+    /* Deep Enterprise Background */
+    --bg-main: #0a0e17; 
+    --bg-gradient: radial-gradient(circle at 60% 50%, #1a2230 0%, #0a0e17 70%);
     
-    /* Vibrant Gradient Accent */
-    --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%); 
-    --accent-color: #38bdf8;
-    --glow-color: rgba(56, 189, 248, 0.5);
+    /* Typography */
+    --text-primary: #ffffff;
+    --text-secondary: #b0b8c4;
+    --font-main: 'Inter', sans-serif; /* Cleaner enterprise font */
     
-    --timeline-line: #334155;
-    --font-main: 'Poppins', sans-serif;
-    --border-color: rgba(255, 255, 255, 0.1);
+    /* Accents - The "Pop" colors from the reference */
+    --accent-teal: #00f2c3; /* Neon Teal/Green for highlights */
+    --accent-orange: #ffbb00; /* Vibrant Orange/Gold */
+    
+    /* Gradients */
+    --btn-gradient-orange: linear-gradient(135deg, #ffdd00 0%, #ffa200 100%);
+    --teal-glow-gradient: linear-gradient(135deg, var(--accent-teal), #00c8ff);
+    
+    /* Glassmorphism Variables (Crisper than before) */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(20px);
+    
+    /* Glow Shadows */
+    --glow-teal-shadow: 0 0 30px rgba(0, 242, 195, 0.3);
+    --glow-orange-shadow: 0 10px 30px -10px rgba(255, 162, 0, 0.5);
 }
 
-/* Light Mode - "Clean Corporate" Theme */
-body.light-mode {
-    --bg-color: #f8fafc;
-    --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    --card-bg: rgba(255, 255, 255, 0.8);
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    
-    --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    --accent-color: #0284c7;
-    --glow-color: rgba(14, 165, 233, 0.3);
-    
-    --timeline-line: #cbd5e1;
-    --border-color: rgba(0, 0, 0, 0.05);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-color); }
-::-webkit-scrollbar-thumb { 
-    background: var(--timeline-line); 
-    border-radius: 5px; 
-}
-::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
-
-/* Selection Color */
-::selection { background: var(--accent-color); color: white; }
-
+/* Reset & Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-teal); }
 
 body {
     font-family: var(--font-main);
-    background: var(--bg-color); /* Fallback */
+    background: var(--bg-main);
     background-image: var(--bg-gradient);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
-    transition: background 0.3s, color 0.3s;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-/* --- 2. Glassmorphism Navbar --- */
+/* --- 2. Glass Navbar --- */
 .navbar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 8%; position: fixed; width: 100%; top: 0;
-    
-    /* Glass Effect */
-    background: rgba(11, 17, 33, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-    
-    z-index: 1000;
+    padding: 18px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+    background: rgba(10, 14, 23, 0.7); /* Darker, more transparent */
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.logo { 
-    font-size: 1.8rem; 
-    font-weight: 800; 
-    letter-spacing: -1px;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; color: white;}
+.accent-dot { color: var(--accent-teal); }
 
-.nav-links { list-style: none; display: flex; gap: 35px; align-items: center; }
+.nav-links { list-style: none; display: flex; gap: 40px; }
 .nav-links a { 
-    font-weight: 500; 
-    font-size: 0.95rem; 
-    color: var(--text-secondary); 
-    position: relative;
+    font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); position: relative;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
-
-/* Animated Underline for Links */
+.nav-links a:hover, .nav-links a.active { color: var(--accent-teal); }
 .nav-links a::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: -5px; left: 0; background: var(--accent-gradient);
-    transition: width 0.3s;
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+    background: var(--accent-teal); transition: 0.3s;
 }
-.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
 
-.theme-switch { cursor: pointer; font-size: 1.2rem; color: var(--text-secondary); }
-.theme-switch:hover { color: var(--accent-color); transform: rotate(15deg); }
-.hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
-
-/* --- 3. Hero Section (Premium Look) --- */
+/* --- 3. Hero Section & Glow Effects --- */
 .hero {
-    min-height: 100vh; 
-    display: flex; justify-content: center; align-items: center;
-    text-align: center; padding: 0 20px;
-    position: relative;
-    overflow: hidden;
+    min-height: 100vh; display: flex; justify-content: flex-start; align-items: center;
+    padding: 0 10%; position: relative; overflow: hidden;
 }
 
-/* Background Glow Blob */
-.hero::before {
-    content: ''; position: absolute; width: 600px; height: 600px;
-    background: var(--accent-color);
-    filter: blur(150px); opacity: 0.1;
-    border-radius: 50%; z-index: -1;
+/* Background glowing blobs similar to reference */
+.glow-bg {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(150px); opacity: 0.15; z-index: -1;
 }
+.glow-teal { background: var(--accent-teal); top: -200px; right: -200px; }
+.glow-orange { background: var(--accent-orange); bottom: -200px; left: -200px; opacity: 0.1; }
 
-.hero-content h1 { 
-    font-size: 4.5rem; 
-    margin: 15px 0; 
-    line-height: 1.1; 
-    font-weight: 800;
-    background: linear-gradient(to right, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-}
-/* Adjust gradient for light mode via specificity */
-body.light-mode .hero-content h1 {
-    background: linear-gradient(to right, #1e293b, #475569);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-}
-
+.hero-content { max-width: 700px; z-index: 2; }
 .greeting { 
-    color: var(--accent-color); 
-    font-weight: 700; 
-    letter-spacing: 3px; 
-    text-transform: uppercase; 
-    font-size: 0.9rem;
-    margin-bottom: 10px; display: block;
+    color: var(--accent-teal); font-weight: 700; letter-spacing: 2px; 
+    text-transform: uppercase; font-size: 1rem; margin-bottom: 15px; display: block;
 }
-
-.typing-text { color: var(--accent-color); font-weight: 600; }
+.hero-content h1 { 
+    font-size: 4rem; line-height: 1.1; font-weight: 800; margin-bottom: 15px;
+    background: linear-gradient(to right, #ffffff, #cbaea3); /* Subtle gradient on white text */
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.typing-text { color: var(--accent-teal); }
 .hero-desc { 
-    margin: 25px auto 40px; 
-    font-size: 1.15rem; 
-    max-width: 600px; 
-    color: var(--text-secondary); 
+    font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px;
 }
 
-/* Modern Buttons */
-.buttons { display: flex; gap: 20px; justify-content: center; }
+/* Enterprise Buttons */
+.buttons { display: flex; gap: 20px; }
 .btn {
-    padding: 14px 35px; border-radius: 50px; font-weight: 600; 
-    cursor: pointer; border: none; font-size: 1rem; transition: all 0.3s ease;
-    position: relative; overflow: hidden;
+    padding: 16px 38px; border-radius: 8px; /* Sharper corners like reference */
+    font-weight: 700; font-size: 1rem; transition: 0.3s; cursor: pointer; border: none;
+    display: inline-flex; align-items: center; gap: 10px;
 }
-
+/* The Orange Gradient Button */
 .btn.primary { 
-    background: var(--accent-gradient); 
-    color: #fff; 
-    box-shadow: 0 10px 25px -10px var(--glow-color);
+    background: var(--btn-gradient-orange); color: #0a0e17; /* Dark text on bright button */
+    box-shadow: var(--glow-orange-shadow);
 }
-.btn.primary:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 15px 30px -10px var(--glow-color); 
-}
+.btn.primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(255, 162, 0, 0.7); }
 
 .btn.secondary { 
-    background: transparent; 
-    color: var(--text-primary); 
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(5px);
+    background: transparent; color: var(--text-primary); border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
 }
-.btn.secondary:hover { 
-    border-color: var(--accent-color); 
-    color: var(--accent-color); 
-    background: rgba(56, 189, 248, 0.05);
-}
+.btn.secondary:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-/* --- 4. Section Styling --- */
-.section { padding: 100px 10%; }
+/* --- 4. Sections & Glass Cards --- */
+.section { padding: 120px 10%; }
 .section-title { 
-    text-align: center; font-size: 2.5rem; margin-bottom: 60px; 
-    color: var(--text-primary); font-weight: 700;
+    font-size: 2.2rem; margin-bottom: 70px; font-weight: 800; 
+    text-align: center; letter-spacing: -1px;
 }
 
-/* --- 5. Glassy Cards (Projects & About) --- */
-.about-container, .project-card, .timeline-content, .contact-container {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(10px); /* The Glass Effect */
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* The Core Glass Card Style (used for Projects, About, Contact) */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 20px; /* Defined rounded corners */
+    padding: 40px;
+    transition: 0.4s ease;
+}
+/* Hover effect mimicking the "Enterprise Core" glowing border */
+.glass-card:hover {
+    border-color: var(--accent-teal);
+    box-shadow: var(--glow-teal-shadow), inset 0 0 20px rgba(0, 242, 195, 0.05);
+    transform: translateY(-5px);
 }
 
 /* About Specifics */
-.about-container { padding: 40px; text-align: center; max-width: 900px; margin: 0 auto; }
-.about-text p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 30px;}
-
+.about-container { max-width: 900px; margin: 0 auto; text-align: center;}
+.about-text p { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 30px; }
 .skills { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 .skills span {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px 25px; border-radius: 30px;
-    border: 1px solid var(--border-color);
-    font-weight: 500; font-size: 0.95rem; color: var(--text-secondary);
-    transition: 0.3s;
+    background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 6px;
+    border: 1px solid var(--glass-border); font-weight: 600; font-size: 0.9rem; color: var(--text-primary);
+    display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
 }
-.skills span:hover { 
-    border-color: var(--accent-color); 
-    color: var(--accent-color); 
-    background: rgba(56, 189, 248, 0.05);
-    transform: translateY(-3px);
-}
+.skills span i { color: var(--accent-teal); }
+.skills span:hover { border-color: var(--accent-teal); background: rgba(0, 242, 195, 0.1); }
 
-/* --- 6. Timeline (Cleaner Look) --- */
-.timeline { 
-    max-width: 800px; margin: 0 auto; padding-left: 40px; 
-    border-left: 2px solid var(--timeline-line); 
-}
+/* --- 5. Timeline (Experience) --- */
+.timeline { max-width: 800px; margin: 0 auto; position: relative; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 40px; }
 .timeline-item { margin-bottom: 50px; position: relative; }
 .timeline-dot {
-    height: 18px; width: 18px; background: var(--accent-gradient);
-    position: absolute; left: -49px; top: 0; border-radius: 50%;
-    box-shadow: 0 0 0 5px var(--bg-color); /* Creates the "cutout" effect */
+    height: 16px; width: 16px; background: var(--accent-teal);
+    position: absolute; left: -49px; top: 5px; border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent-teal);
 }
-.timeline-date { 
-    font-size: 0.9rem; color: var(--accent-color); 
-    font-weight: 600; margin-bottom: 8px; display: block;
-}
-.timeline-content { padding: 25px; transition: 0.3s; }
-.timeline-content:hover { transform: translateX(10px); border-color: var(--accent-color); }
-.timeline-content h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-primary); }
-.timeline-content p { color: var(--text-secondary); font-size: 0.95rem; }
+.timeline-date { color: var(--accent-teal); font-weight: 700; margin-bottom: 10px; display: block; }
+.timeline-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.timeline-content p { color: var(--text-secondary); }
 
-/* --- 7. Project Grid (Hover Effects) --- */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-.project-card { 
-    padding: 35px; transition: 0.4s ease; 
-    display: flex; flex-direction: column; justify-content: space-between;
+/* --- 6. Projects Grid (Enterprise Core Style) --- */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+.project-card { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.card-header { margin-bottom: 25px; }
+.card-icon { 
+    font-size: 2.5rem; 
+    background: var(--teal-glow-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(0, 242, 195, 0.4));
 }
-.project-card:hover { 
-    transform: translateY(-15px); 
-    box-shadow: 0 20px 40px -15px var(--glow-color);
-    border-color: var(--accent-color);
-}
-.card-icon { font-size: 2.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
-.project-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-primary); }
-.project-card p { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;}
+.project-card h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; }
+.project-card p { color: var(--text-secondary); margin-bottom: 30px; flex-grow: 1; font-size: 1.05rem;}
 .card-link { 
-    color: var(--accent-color); font-weight: 600; 
-    font-size: 1rem; display: inline-flex; align-items: center; gap: 5px;
+    color: var(--accent-teal); font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px;
 }
-.card-link:hover { gap: 10px; } /* Slide arrow effect */
+.card-link i { transition: 0.3s; }
+.card-link:hover i { transform: translateX(5px); }
 
-/* --- 8. Contact Form --- */
-.contact-container { padding: 40px; max-width: 600px; margin: 0 auto; }
-.contact-form input, .contact-form textarea {
-    width: 100%; padding: 18px; margin-bottom: 20px;
-    border-radius: 12px; border: 1px solid var(--border-color);
-    background: rgba(255,255,255,0.03); 
-    color: var(--text-primary); font-family: inherit; font-size: 1rem;
-    outline: none; transition: 0.3s;
+/* --- 7. Contact & Footer --- */
+.contact-container { max-width: 700px; margin: 0 auto; }
+.contact-form { display: flex; flex-direction: column; gap: 25px; }
+/* Floating Label Input Style */
+.input-group { position: relative; }
+.input-group input, .input-group textarea {
+    width: 100%; padding: 20px; border-radius: 8px;
+    border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2);
+    color: var(--text-primary); font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s;
 }
-.contact-form input:focus, .contact-form textarea:focus { 
-    border-color: var(--accent-color); 
-    background: rgba(255,255,255,0.05); 
-    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+.input-group label {
+    position: absolute; left: 20px; top: 20px; color: var(--text-secondary);
+    pointer-events: none; transition: 0.3s;
+}
+.input-group input:focus, .input-group input:valid,
+.input-group textarea:focus, .input-group textarea:valid {
+    border-color: var(--accent-teal); background: rgba(0, 242, 195, 0.02);
+}
+.input-group input:focus ~ label, .input-group input:valid ~ label,
+.input-group textarea:focus ~ label, .input-group textarea:valid ~ label {
+    top: -10px; left: 15px; font-size: 0.85rem; color: var(--accent-teal);
+    background: var(--bg-main); padding: 0 5px;
 }
 
-/* Footer Socials */
-.socials a { 
-    width: 45px; height: 45px; border-radius: 50%; 
-    display: inline-flex; align-items: center; justify-content: center;
-    border: 1px solid var(--border-color); margin: 0 10px;
-    color: var(--text-secondary); font-size: 1.2rem;
-    transition: 0.3s;
+.footer { text-align: center; padding-bottom: 40px; }
+.socials { margin: 40px 0; display: flex; justify-content: center; gap: 20px; }
+.socials a {
+    width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--glass-border); color: var(--text-secondary); font-size: 1.2rem;
+    background: var(--glass-bg); backdrop-filter: var(--glass-blur); transition: 0.3s;
 }
 .socials a:hover { 
-    background: var(--accent-gradient); 
-    color: #fff; border-color: transparent; transform: translateY(-5px);
+    border-color: var(--accent-teal); color: var(--accent-teal); 
+    box-shadow: var(--glow-teal-shadow); transform: translateY(-5px);
 }
+.copyright { color: var(--text-secondary); font-size: 0.9rem; }
 
-/* --- 9. Utilities & Mobile --- */
+/* --- 8. Scroll Top & Animations --- */
 .scroll-top {
     position: fixed; bottom: 30px; right: 30px;
-    background: var(--accent-gradient); color: white;
-    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--accent-teal); color: #0a0e17;
+    width: 50px; height: 50px; border-radius: 8px;
     display: flex; justify-content: center; align-items: center;
-    cursor: pointer; opacity: 0; pointer-events: none; transition: 0.4s;
-    z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer; opacity: 0; pointer-events: none; transition: 0.4s; z-index: 99;
+    box-shadow: var(--glow-teal-shadow);
 }
 .scroll-top.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .scroll-top:hover { transform: translateY(-5px); }
 
-.hidden { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+.hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .show { opacity: 1; transform: translateY(0); }
 
+/* --- 9. Mobile Responsive --- */
+@media (max-width: 992px) {
+    .hero { padding-top: 120px; justify-content: center; text-align: center; }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-desc { margin: 0 auto 40px; }
+    .buttons { justify-content: center; }
+}
 @media (max-width: 768px) {
-    .navbar { padding: 15px 20px; background: var(--bg-color); }
-    .hamburger { display: block; }
+    .navbar { padding: 15px 20px; }
+    .hamburger { display: block; color: var(--text-primary); }
     .nav-links {
         position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px);
-        background: var(--bg-color); flex-direction: column; justify-content: flex-start;
-        padding-top: 50px; transition: 0.4s; border-top: 1px solid var(--border-color);
+        background: rgba(10, 14, 23, 0.95); backdrop-filter: blur(20px);
+        flex-direction: column; justify-content: flex-start; padding-top: 60px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-top: 1px solid var(--glass-border);
     }
     .nav-links.active { right: 0; }
-    .hero-content h1 { font-size: 3rem; }
     .section { padding: 80px 5%; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .buttons { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
 }
