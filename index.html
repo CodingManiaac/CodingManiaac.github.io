@@ -3,94 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Alex Doe | Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">Portfolio.</div>
+        <div class="logo">Portfolio<span style="color:var(--accent-color)">.</span></div>
+        
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <span class="greeting">Hello, I'm</span>
-            <h1>Vishwanath Reddy</h1>
-            <p>Web Developer & UI/UX Designer</p>
+        <div class="hero-content hidden">
+            <span class="greeting">Hello, It's Me</span>
+            <h1>Alex Doe</h1>
+            <h3>I'm a <span class="typing-text"></span></h3>
             <div class="buttons">
                 <a href="#projects" class="btn primary">View My Work</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
+                <a href="#contact" class="btn secondary">Hire Me</a>
             </div>
         </div>
     </section>
 
     <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-container">
+        <h2 class="section-title hidden">About Me</h2>
+        <div class="about-container hidden">
             <div class="about-text">
-                <p>I am a passionate developer skilled in building clean and responsive websites. I love turning complex problems into simple, beautiful, and intuitive interface designs. I focus on writing clean code and creating user-friendly experiences.</p>
+                <p>I am a passionate developer with a knack for solving real-world problems. Whether it's building a sleek website or optimizing a database, I love the technical challenge. As a <strong>Technical Club President</strong>, I also enjoy leading teams and organizing tech events.</p>
                 
                 <div class="skills">
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>JavaScript</span>
-                    <span>React</span>
+                    <span><i class="fab fa-html5"></i> HTML5</span>
+                    <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                    <span><i class="fab fa-js"></i> JavaScript</span>
+                    <span><i class="fab fa-python"></i> Python</span>
+                    <span><i class="fas fa-database"></i> SQL</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="section">
-        <h2 class="section-title">My Projects</h2>
+        <h2 class="section-title hidden">Latest Projects</h2>
         <div class="projects-grid">
             
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>E-Commerce Dashboard</h3>
-                    <p>A responsive admin dashboard built with Flexbox and Chart.js.</p>
-                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="project-card hidden">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>IoT Dashboard</h3>
+                <p>A real-time dashboard for monitoring sensor data using Python and Cloud integration.</p>
+                <a href="#" class="card-link">Code <i class="fab fa-github"></i></a>
             </div>
 
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>Portfolio Theme</h3>
-                    <p>A minimal dark-themed personal portfolio website template.</p>
-                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="project-card hidden">
+                <div class="card-icon"><i class="fas fa-shoe-prints"></i></div>
+                <h3>Smart Footwear</h3>
+                <p>Research project on diabetic foot detection using embedded sensors.</p>
+                <a href="#" class="card-link">Read Paper <i class="fas fa-file-alt"></i></a>
             </div>
 
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>Weather App</h3>
-                    <p>Dynamic weather application using OpenWeather API.</p>
-                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="project-card hidden">
+                <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
+                <h3>E-Commerce UI</h3>
+                <p>A responsive front-end design for an online store with cart functionality.</p>
+                <a href="#" class="card-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
             </div>
 
         </div>
     </section>
 
-    <section id="contact" class="footer">
-        <h2>Let's work together</h2>
-        <p>Have a project in mind? Feel free to reach out.</p>
-        <a href="mailto:email@example.com" class="email-link">email@example.com</a>
+    <section id="contact" class="section footer">
+        <h2 class="section-title hidden">Contact Me</h2>
         
-        <div class="socials">
+        <div class="contact-container hidden">
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+
+        <div class="socials hidden">
             <a href="#"><i class="fab fa-linkedin"></i></a>
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <p class="copyright">&copy; 2024 Alex Doe. All rights reserved.</p>
+        <p class="copyright">&copy; 2025 Alex Doe.</p>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
