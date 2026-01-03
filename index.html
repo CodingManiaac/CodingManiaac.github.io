@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Vishwanath Reddy</h1>
+
+    <nav class="navbar">
+        <div class="logo">Portfolio.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="greeting">Hello, I'm</span>
+            <h1>Alex Doe</h1>
+            <p>Web Developer & UI/UX Designer</p>
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I am a passionate developer skilled in building clean and responsive websites. I love turning complex problems into simple, beautiful, and intuitive interface designs. I focus on writing clean code and creating user-friendly experiences.</p>
+                
+                <div class="skills">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>React</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="card-content">
+                    <h3>E-Commerce Dashboard</h3>
+                    <p>A responsive admin dashboard built with Flexbox and Chart.js.</p>
+                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-content">
+                    <h3>Portfolio Theme</h3>
+                    <p>A minimal dark-themed personal portfolio website template.</p>
+                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-content">
+                    <h3>Weather App</h3>
+                    <p>Dynamic weather application using OpenWeather API.</p>
+                    <a href="#" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="footer">
+        <h2>Let's work together</h2>
+        <p>Have a project in mind? Feel free to reach out.</p>
+        <a href="mailto:email@example.com" class="email-link">email@example.com</a>
+        
+        <div class="socials">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="copyright">&copy; 2024 Alex Doe. All rights reserved.</p>
+    </section>
+
 </body>
 </html>
